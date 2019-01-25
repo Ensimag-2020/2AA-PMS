@@ -37,6 +37,9 @@
 % Draw figures
 \usepackage{tikz}
 
+% provides the H option
+\usepackage{float}
+
 % Tikz node rotation
 \usetikzlibrary{positioning}
 
@@ -45,6 +48,13 @@
     \node [#1, opacity=0.0] (tmp) {#3};
     \node [draw, rotate around={#2:(tmp.center)}] at (tmp) {#3};
 }
+
+% remove extra space
+\newcommand{\squeezeup}{\vspace{-4.5cm}}
+
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{figure}{\vskip-2ex}
+\AfterEndEnvironment{figure}{\vskip-1ex}
 
 % Clickable links
 \usepackage{hyperref}
@@ -154,20 +164,19 @@ Loi binomiale avec un n grand et un p tres petit ressemble à une loi de poisson
 \subsection{Loi géometrique}
 Discrete, elle caracterise l'obtention d'un résultat positif apres une succession de tentatives, le cas du questionnaire.
 
-\subsection{Loi binomiale}
-Sur les n pieces qu'on a sondé, lesquelles ont répondu au critere de qualité.\\
-Sur chaque piece
-Somme des bernoulli
-
 \subsection{Loi bernoulli}
-Somme de binomiale, soit sur toutes les pieces
+Cas spécial de la loi binamiale où $B(1,p) = B(p)$, soit n = 1.\\ 
+Son résultat est binaire ($=1$ ou $=0$).
 
+\subsection{Loi binomiale}
+Somme de Bernoulli où on s'interesse à un ensemble de résultat au lieu d'un seul.
 
 \pagebreak
-
-\section{Recap lois}
+\section{Recap des lois}
+\squeezeup
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.8]{img/recap.pdf}
+    \includegraphics[scale=0.7]{img/recap.pdf}
 \end{figure}
+
 \end{document}
